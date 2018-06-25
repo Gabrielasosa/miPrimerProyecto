@@ -10,12 +10,13 @@ guardar.on('click',function(){
     let password = $('#contrasenia').val(); 
 
 $.post('http://localhost:3000/showchef/add', { Nombre: nombre, Apellido: apellido}, function(showchef){
-    pintar.append('<div id="pintar2">El Usuario ' + showchef.Nombre + 'se creo Correctamente</div>')
+    
 }
 
-);//fin funcion
-console.log(guardar);
-} )
+
+);//fin post
+pintar.append('El Usuario  se creo Correctamente')
+} )//fin funcui
 
 
 });//fin document.ready
