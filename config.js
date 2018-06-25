@@ -4,7 +4,8 @@ var con = mysql.createConnection({
     host:'localhost',
     user: 'root',
     password: '',
-    database:'showchef'
+    database:'showchef',
+  
 });
 
 
@@ -12,3 +13,6 @@ con.connect(function(err){
     if(err) throw err;
     console.log('Base de datos Conectado')
 })
+
+//metodo para exportar modulos o variables
+module.exports = con;

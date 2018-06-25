@@ -1,1 +1,1 @@
-var routes= require('./routes.js');
+var con = require('./routes');
