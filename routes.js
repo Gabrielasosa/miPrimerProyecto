@@ -10,8 +10,8 @@ app.get('/index', function (req, res) {
     res.render('index');
 })
 
-app.get('/pruena', function (req, res) {
-    res.render('pruena');
+app.get('/chef', function (req, res) {
+    res.render('chef');
 })
 //ruta para añadir usuarios
 
