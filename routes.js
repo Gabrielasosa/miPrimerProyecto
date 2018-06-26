@@ -3,16 +3,23 @@ var app = require('./app');
 
 //----RUTAS----
 
-app.get ('/', function(req, res){
+app.get('/', function (req, res) {
+    res.render('index');
+})
+app.get('/index', function (req, res) {
     res.render('index');
 })
 
-
+app.get('/pruena', function (req, res) {
+    res.render('pruena');
+})
 //ruta para añadir usuarios
 
 app.post('/showchef/add', function (req, res) {
     //req.body es el cuerpo de la peticion
-    let sql = `INSERT INTO usuario (Nombre, Apellido) VALUES ('${req.body.Nombre}','${req.body.Apellido}')`;
+    let sql = `INSERT INTO usuario (Nombre, Apellido,Email,Provincia,Ciudad,Telefono,FechaInicio,idRol,Password) 
+    VALUES ('${req.body.Nombre}','${req.body.Apellido}','${req.body.Email}','${req.body.Provincia}'
+    ,'${req.body.Ciudad}','${req.body.Telefono}','${req.body.FechaInicio}','${req.body.idRol}','${req.body.Password}')`;
 
     con.query(sql, function (err, result) {
         if (err) {
@@ -22,8 +29,15 @@ app.post('/showchef/add', function (req, res) {
             let showchef = {
                 IdUsuario: result.IdUsuario,
                 Nombre: req.body.Nombre,
-                Apellido: req.body.apellido
-               
+                Apellido: req.body.Apellido,
+                Email: req.body.Email,
+                Provincia: req.body.Provincia,
+                Ciudad: req.body.Ciudad,
+                Telefono: req.body.Telefono,
+                FechaInicio: req.body.FechaInicio,
+                idRol: req.body.idRol,
+                Password: req.body.Password
+
             }
             res.send(showchef);
         }
@@ -94,11 +108,11 @@ app.post('/showchef/delete', function (req, res) {
 app.post('/showchef/update', function (req, res) {
     let sql = `UPDATE usuario set estado='${req.body.estado}' where id = '${req.body.id}'`;
     con.query(sql, function (err, result) {
-        
+
         if (err) {
             console.log(err)
             res.send(err);
-            
+
         }
         else {
             res.send(result);
