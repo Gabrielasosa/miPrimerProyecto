@@ -32,7 +32,7 @@ $(document).ready(function () {
     let telefono = $('#telefono').val();
     let fecha = output;
 
-    $.post('http://localhost:3000/showchef/add', {
+    $.post('http://localhost:3000/showchef_user/add', {
         Nombre: nombre,
         Apellido: apellido,
         Email: email,
@@ -42,7 +42,7 @@ $(document).ready(function () {
         Telefono: telefono,
         FechaInicio: fecha,
         idRol: "U"
-    }, function (showchef) {
+    }, function (showchef_user) {
 
     }); //fin post
 
@@ -63,7 +63,7 @@ $(document).ready(function () {
         $.post('http://localhost:3000/showchef_cocinero/add', {
             Nombre_c: Nombre_c, Apellido_c: Apellido_c, Email_c: Email_c, Password_c: Password_c, Provincia_c: Provincia_c,
             Ciudad_c: Ciudad_c, Telefono_c: Telefono_c, FechaInicio_c: FechaInicio_c, idRol_c: "C",Especialidad_c:Especialidad_c
-        }, function (showchef) {
+        }, function (showchef_cocinero) {
 
         });//fin post
     })//fin funcion

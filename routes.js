@@ -25,6 +25,7 @@ app.post('/showchef_user/add', function (req, res) {
     ,'${req.body.Ciudad}','${req.body.Telefono}','${req.body.FechaInicio}','${req.body.idRol}','${req.body.Password}')`;
 
     con.query(sql, function (err, result) {
+        console.log(sql)
         if (err) {
             res.send(err);
         }
@@ -134,10 +135,10 @@ app.post('/showchef_cocinero/add', function (req, res) {
     let sql = `INSERT INTO cocinero (Nombre_c, Apellido_c,Email_c,Provincia_c,Ciudad_c,Telefono_c,FechaInicio_c,idRol_c,Password_c,Especialidad_c) 
     VALUES ('${req.body.Nombre_c}','${req.body.Apellido_c}','${req.body.Email_c}','${req.body.Provincia_c}'
     ,'${req.body.Ciudad_c}','${req.body.Telefono_c}','${req.body.FechaInicio_c}','${req.body.idRol_c}','${req.body.Password_c}','${req.body.Especialidad_c}')`;
-    console.log(sql)
+   
     con.query(sql, function (err, result) {
         if (err) {
-            console.log(err)
+          
             res.send(err);
         }
         else {
