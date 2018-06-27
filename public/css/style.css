@@ -4,3 +4,15 @@
 #cont_cocinero {
     display: none;
 };
+
+
+
+/* estilo pantalla gestion usuatio */
+.wrapper{
+    width: 650px;
+    margin: 0 auto;
+}
+
+table tr td:last-child a{
+    margin-right: 15px;
+}
