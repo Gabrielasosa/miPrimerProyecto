@@ -54,7 +54,7 @@ $(document).ready(function () {
     var listar = $('#linea')
     $.get('http://localhost:3000/showchef_user_consul', function (res) {
         res.forEach(usuario => {
-            listar.append('<tr id="'+usuario.IdUsuario+'">' + '<td>' + usuario.IdUsuario + '</td>' +
+            listar.append('<tr id="' + usuario.IdUsuario + '">' + '<td>' + usuario.IdUsuario + '</td>' +
                 '<td>' + usuario.Nombre + '  ' + usuario.Apellido + '</td>' +
                 '<td>' + usuario.Email + '</td>' +
                 '<td>' + usuario.idRol + '</td>' +
@@ -69,8 +69,13 @@ $(document).ready(function () {
             )
         });
     });
+    //---------Modificar Usuarios
+var modUser = $('#nombre_mod') 
 
+modUser.on('change','nuevoNombe',function () {
+$.get('http://localhost:3000/showchef_user/update'),{IdUsuario:IdUsuario,Nombre:Nombre}
 
+  })
     //------------Cocineros-------------------
 
     //-------------------Registro de Cocineros------------------
@@ -102,13 +107,13 @@ $(document).ready(function () {
     }) //fin funcion
 
     //-------------consultar cocineros-----------------
-  
+
 
     var listar = $('#linea')
-    var mod_c=$("a[href$='../views/modificar.html']")
+    var mod_c = $("a[href$='../views/modificar.html']")
     $.get('http://localhost:3000/showchef_cocinero_consul', function (res) {
         res.forEach(cocinero => {
-            listar.append('<tr id="'+cocinero.idCocinero+'">' + '<td>' + cocinero.idCocinero + '</td>' +
+            listar.append('<tr id="' + cocinero.idCocinero + '">' + '<td>' + cocinero.idCocinero + '</td>' +
                 '<td>' + cocinero.Nombre_c + '  ' + cocinero.Apellido_c + '</td>' +
                 '<td>' + cocinero.Email_c + '</td>' +
                 '<td>' + cocinero.idRol_c + '</td>' +
@@ -116,7 +121,7 @@ $(document).ready(function () {
                 '<td>' + cocinero.Provincia_c + '</td>' +
                 '<td>' +
                 '<a href="#" title="Ver detalles" data-toggle="tooltip">' + '<i class="fas fa-eye">' + '</i>' + '</i>' + '</a>' +
-                '<a href="'+mod_c+' " title="Modificar usuario" data-toggle="tooltip">' + '<i class="far fa-edit">' + '</i>' + '</a>' +
+                '<a href="' + mod_c + ' " title="Modificar usuario" data-toggle="tooltip">' + '<i class="far fa-edit">' + '</i>' + '</a>' +
                 '<a href="#"title="Eliminar usuario" data-toggle="modal" data-target="#confirm-delete">' + '<i class="far fa-trash-alt">' + '</i>' + '</a>' +
                 '</td>' +
                 '</tr>'

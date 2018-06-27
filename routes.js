@@ -92,7 +92,7 @@ app.post('/showchef_user/delete', function (req, res) {
 
 //modificar usuarios de showchef
 app.post('/showchef_user/update', function (req, res) {
-    let sql = `UPDATE usuario set estado='${req.body.estado}' where id = '${req.body.id}'`;
+    let sql = `UPDATE usuario set Nombre='${req.body.Nombre}',Email='${req.body.Email}' where id = '${req.body.IdUsuario}'`;
     con.query(sql, function (err, result) {
 
         if (err) {
