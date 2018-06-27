@@ -19,6 +19,9 @@ app.get('/gestionUsuarios', function (req, res) {
     res.render('gestionUsuarios');
 })
 
+app.get('/modificar', function (req, res) {
+    res.render('modificar');
+})
 
 //----------------todas las rutas para usuario-----------------
 
@@ -145,7 +148,7 @@ app.post('/showchef_cocinero/add', function (req, res) {
 
 //consultar los cocineros de showchef
 
-app.get('/showchef', function (req, res) {
+app.get('/showchef_cocinero_consul', function (req, res) {
     let sql = 'SELECT * from cocinero';
     con.query(sql, function (err, result) {
         if (err) {

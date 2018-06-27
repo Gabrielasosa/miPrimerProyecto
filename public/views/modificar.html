@@ -64,44 +64,40 @@
     </div>
 
   </nav>
-  <!-- contenido gestion Usuario -->
-  <div id="container">
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="clearfix mb-3">
-            <h2 class="float-left">Gestión de usuarios</h2>
-            <!-- <a href="nuevo.html" class="btn btn-success float-right">Añadir nuevo usuario</a> -->
+  <!-- contenido-->
+<div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h2>Modificar usuario</h2>
+                </div>
 
-          </div>
+                <form action="index.html" method="post">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" name="nombre" class="form-control">
+                       
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" name="email" class="form-control">
+                    </div>
 
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Rol</th>
-                <th>Fecha Creacion</th>
-                <th>Provincia</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-
-            <tbody id="linea">
-
-
-            </tbody>
-          </table>
-
-        </div>
-      </div>
+                     <div class="form-group">
+                        <input type="checkbox" name="activo" id="activo">
+                        <label for="activo">Activo</label>
+                    </div>
+                   
+                    <input type="submit" class="btn btn-primary" value="Guardar">
+                    <a href="index" class="btn btn-default">Cancelar</a>
+                </form>
+            </div>
+        </div>        
     </div>
 
 
 
 
-  </div>
 
   <!-- 1ºjQuery, 2ºPopper.js, 3º Bootstrap JS (links externos) 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

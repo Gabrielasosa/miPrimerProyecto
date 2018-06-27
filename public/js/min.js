@@ -50,28 +50,27 @@ $(document).ready(function () {
     }) //fin funcion
 
     //-----------Consultar Usuarios---------------
-   
+
     var listar = $('#linea')
-   $.get('http://localhost:3000/showchef_user_consul', function (res) {
+    $.get('http://localhost:3000/showchef_user_consul', function (res) {
         res.forEach(usuario => {
-            listar.append( '<tr>' + '<td>' + usuario.IdUsuario + '</td>' +
-            '<td>' + usuario.Nombre +'  '+usuario.Apellido+ '</td>' +
-            '<td>' + usuario.Email + '</td>' +
-            '<td>' + usuario.idRol + '</td>' +
-            '<td>' + usuario.FechaInicio + '</td>' +
-            '<td>' + usuario.Provincia + '</td>' +
-            '<td>' +
-            '<a href="#" title="Ver detalles" data-toggle="tooltip">'+'<i class="fas fa-eye">'+'</i>'+'</i>'+'</a>'+
-            '<a href="#" title="Modificar usuario" data-toggle="tooltip">'+'<i class="far fa-edit">'+'</i>'+'</a>'+
-            '<a href="#"title="Eliminar usuario" data-toggle="modal" data-target="#confirm-delete">'+'<i class="far fa-trash-alt">'+'</i>'+'</a>'
-            + '</td>'
-            +
-            '</tr>'
+            listar.append('<tr id="'+usuario.IdUsuario+'">' + '<td>' + usuario.IdUsuario + '</td>' +
+                '<td>' + usuario.Nombre + '  ' + usuario.Apellido + '</td>' +
+                '<td>' + usuario.Email + '</td>' +
+                '<td>' + usuario.idRol + '</td>' +
+                '<td>' + usuario.FechaInicio + '</td>' +
+                '<td>' + usuario.Provincia + '</td>' +
+                '<td>' +
+                '<a href="#" title="Ver detalles" data-toggle="tooltip">' + '<i class="fas fa-eye">' + '</i>' + '</i>' + '</a>' +
+                '<a href="#" title="Modificar usuario" data-toggle="tooltip">' + '<i class="far fa-edit">' + '</i>' + '</a>' +
+                '<a href="#"title="Eliminar usuario" data-toggle="modal" data-target="#confirm-delete">' + '<i class="far fa-trash-alt">' + '</i>' + '</a>' +
+                '</td>' +
+                '</tr>'
             )
-         });
+        });
     });
-       
-    
+
+
     //------------Cocineros-------------------
 
     //-------------------Registro de Cocineros------------------
@@ -87,12 +86,43 @@ $(document).ready(function () {
         let Especialidad_c = $('#especialidad').val();
 
         $.post('http://localhost:3000/showchef_cocinero/add', {
-            Nombre_c: Nombre_c, Apellido_c: Apellido_c, Email_c: Email_c, Password_c: Password_c, Provincia_c: Provincia_c,
-            Ciudad_c: Ciudad_c, Telefono_c: Telefono_c, FechaInicio_c: FechaInicio_c, idRol_c: "C", Especialidad_c: Especialidad_c
+            Nombre_c: Nombre_c,
+            Apellido_c: Apellido_c,
+            Email_c: Email_c,
+            Password_c: Password_c,
+            Provincia_c: Provincia_c,
+            Ciudad_c: Ciudad_c,
+            Telefono_c: Telefono_c,
+            FechaInicio_c: FechaInicio_c,
+            idRol_c: "C",
+            Especialidad_c: Especialidad_c
         }, function (showchef_cocinero) {
 
-        });//fin post
-    })//fin funcion
+        }); //fin post
+    }) //fin funcion
+
+    //-------------consultar cocineros-----------------
+  
+
+    var listar = $('#linea')
+    var mod_c=$("a[href$='../views/modificar.html']")
+    $.get('http://localhost:3000/showchef_cocinero_consul', function (res) {
+        res.forEach(cocinero => {
+            listar.append('<tr id="'+cocinero.idCocinero+'">' + '<td>' + cocinero.idCocinero + '</td>' +
+                '<td>' + cocinero.Nombre_c + '  ' + cocinero.Apellido_c + '</td>' +
+                '<td>' + cocinero.Email_c + '</td>' +
+                '<td>' + cocinero.idRol_c + '</td>' +
+                '<td>' + cocinero.FechaInicio_c + '</td>' +
+                '<td>' + cocinero.Provincia_c + '</td>' +
+                '<td>' +
+                '<a href="#" title="Ver detalles" data-toggle="tooltip">' + '<i class="fas fa-eye">' + '</i>' + '</i>' + '</a>' +
+                '<a href="'+mod_c+' " title="Modificar usuario" data-toggle="tooltip">' + '<i class="far fa-edit">' + '</i>' + '</a>' +
+                '<a href="#"title="Eliminar usuario" data-toggle="modal" data-target="#confirm-delete">' + '<i class="far fa-trash-alt">' + '</i>' + '</a>' +
+                '</td>' +
+                '</tr>'
+            )
+        });
+    });
 
     //-------------------ocultar y reaparecer texto
 
