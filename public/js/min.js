@@ -90,8 +90,6 @@ $(document).ready(function () {
 
     //-------------------ocultar y reaparecer texto
 
-    $("#cont_usuario").hide()
-    $("#cont_cocinero").hide()
     $(function () {
         $("#btn_cocinero").click(function () {
             $("#cont_usuario").hide();

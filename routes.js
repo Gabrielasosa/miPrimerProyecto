@@ -10,8 +10,8 @@ app.get('/index', function (req, res) {
     res.render('index');
 })
 
-app.get('/pruebas', function (req, res) {
-    res.render('pruebas');
+app.get('/registro', function (req, res) {
+    res.render('registro');
 })
 
 //----------------todas las rutas para usuario-----------------

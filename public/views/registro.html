@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Nuevo Usuario ShowChef</title>
+  <title>ShowChef</title>
   <!-- meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,7 +26,7 @@
   <script src="../js/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 
   <!-- miJS -->
-  <script src="../js/pruebas.js"></script>
+  <script src="../js/min.js"></script>
 
   <!-- validador JS Siempre va al Final -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
@@ -44,13 +44,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
       <ul class="navbar-nav ml-auto float-right">
-        <li class="nav-item active" id="regUser">
-          <a class="nav-link" href="">Registro Usuario
+        <li class="nav-item active">
+          <a class="nav-link" href="registro">Registro
             <span class="sr-only">(current)</span>
           </a>
         </li>
-        <li class="nav-item" id="regChef">
-          <a class="nav-link" href="chef">Registro Cocineros</a>
+        <li class="nav-item">
+          <a class="nav-link" href="pruebas">Registro nose</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Reserva</a>
@@ -64,67 +64,149 @@
     </div>
 
   </nav>
-  <div class="container demo">
+  <!-- toogles segun tipo de usuario -->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <!-- izquierda -->
+      </div>
+      <div class="col-6">
+        <div class="col-sm">
+          <button type="button" class="btn btn-outline-danger" id="btn_cocinero">
 
-	
-      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingOne">
-            <h4 class="panel-title">
-              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                <i class="more-less glyphicon glyphicon-plus"></i>
-                Collapsible Group Item #1
-              </a>
-            </h4>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            <img src="../img/cocinero.png"> Cocinero</button>
+          <button type="button" class="btn btn-outline-danger" id="btn_usuario">
+
+            <img src="../img/camarero (1).png">Usuario</button>
+        </div>
+
+        <!-- comienza el formulario de cocinero -->
+        <div id="cont_cocinero">
+          <div class="container mt-5">
+
+            <div class="page-header">
+              <h2>Nuevo Cocinero</h2>
             </div>
+
+            <form id="formularioCocinero">
+
+
+              <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" class="form-control" data-validation="required alphanumeric" name="name" id="nombrec">
+
+              </div>
+              <div class="form-group">
+                <label>Apellido</label>
+                <input type="text" class="form-control" id="apellidoc" data-validation="required alphanumeric" name="name">
+
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" id="emailc" data-validation="required email" name="email">
+              </div>
+              <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" class="form-control" name="pass_confirmation" data-validation="length" data-validation-length="min8">
+
+
+              </div>
+              <div class="form-group">
+                <label>Confirma la contraseña</label>
+                <input type="password" class="form-control" id="contraseniac" name="pass" data-validation="confirmation">
+              </div>
+              <div class="form-group">
+                <label>Especialidad</label>
+                <input type="text" class="form-control" data-validation="required alphanumeric" name="name" id="especialidad">
+
+              </div>
+              <div class="form-group">
+                <label>Telefono</label>
+                <input type="text" class="form-control" id="telefonoc" data-validation="required number" name="phone">
+              </div>
+              <div class="form-group">
+                <label>Provincia</label>
+                <input type="text" name="provincia" class="form-control" id="provinciac" data-validation="required alphanumeric" name="address">
+              </div>
+              <div class="form-group">
+                <label>Ciudad</label>
+                <input type="text" id="ciudadc" class="form-control" data-validation="required alphanumeric" name="address">
+              </div>
+
+              <div class="controls">
+                <button type="submit" class="btn btn-primary" id="guardar_cocinero">Guardar</button>
+              </div>
+
+
+            </form>
+
           </div>
         </div>
-    
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingTwo">
-            <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <i class="more-less glyphicon glyphicon-plus"></i>
-                Collapsible Group Item #2
-              </a>
-            </h4>
-          </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-            <div class="panel-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+        <div id="cont_usuario">
+          <div class="container mt-5">
+
+            <div class="page-header">
+              <h2>Nuevo usuario</h2>
             </div>
+        
+            <form id="formularioContacto">
+
+
+              <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" class="form-control" data-validation="required alphanumeric" name="name" id="nombre">
+        
+              </div>
+              <div class="form-group">
+                <label>Apellido</label>
+                <input type="text" class="form-control" id="apellido" data-validation="required alphanumeric" name="name">
+        
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" id="email" data-validation="required email" name="email">
+              </div>
+              <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" class="form-control" name="pass_confirmation" data-validation="length" data-validation-length="min8">
+        
+        
+              </div>
+              <div class="form-group">
+                <label>Confirma la contraseña</label>
+                <input type="password" class="form-control" id="contrasenia" name="pass" data-validation="confirmation">
+              </div>
+              <div class="form-group">
+                <label>Telefono</label>
+                <input type="text" class="form-control" id="telefono" data-validation="required number" name="phone">
+              </div>
+              <div class="form-group">
+                <label>Provincia</label>
+                <input type="text" name="provincia" class="form-control" id="provincia" data-validation="required alphanumeric" name="address">
+              </div>
+              <div class="form-group">
+                <label>Ciudad</label>
+                <input type="text" id="ciudad" class="form-control" data-validation="required alphanumeric" name="address">
+              </div>
+        
+              <div class="controls">
+                <button type="submit" class="btn btn-primary" id="guardar_usuario">Guardar</button>
+              </div>
+        
+              <!-- <a href="#" class="btn btn-default">Cancelar</a> -->
+            </form>
+        
           </div>
         </div>
-    
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingThree">
-            <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                <i class="more-less glyphicon glyphicon-plus"></i>
-                Collapsible Group Item #3
-              </a>
-            </h4>
-          </div>
-          <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-            <div class="panel-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-            </div>
-          </div>
-        </div>
-    
-      </div><!-- panel-group -->
-      
-      
-    </div><!-- container -->
-    
-    <footer class="demo-footer">
-      <a href="http://www.bootpen.com" target="_blank">Get more code snippets</a>
-    </footer>
+      </div>
+      <div class="col">
+        <!-- derecha -->
+      </div>
+
+    </div>
+  </div>
+
   <!-- 1ºjQuery, 2ºPopper.js, 3º Bootstrap JS (links externos) 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
