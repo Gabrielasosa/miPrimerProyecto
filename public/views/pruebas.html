@@ -50,7 +50,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="chef">Registro Cocineros</a>
+          <a class="nav-link" href="pruebas">Registro nose</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Reserva</a>
@@ -77,65 +77,72 @@
             <img src="../img/cocinero.png"> Cocinero</button>
           <button type="button" class="btn btn-outline-danger" id="btn_usuario">
 
-            <img src="../img/chica.png"> Cocinero</button>
+            <img src="../img/camarero (1).png">Usuario</button>
         </div>
+
+        <!-- comienza el formulario de cocinero -->
         <div id="cont_cocinero">
           <div class="container mt-5">
 
             <div class="page-header">
               <h2>Nuevo Cocinero</h2>
             </div>
-        
-            <form id="formularioContacto">
-        
-        
+
+            <form id="formularioCocinero">
+
+
               <div class="form-group">
                 <label>Nombre</label>
-                <input type="text" class="form-control" data-validation="required alphanumeric" name="name" id="nombre">
-        
+                <input type="text" class="form-control" data-validation="required alphanumeric" name="name" id="nombrec">
+
               </div>
               <div class="form-group">
                 <label>Apellido</label>
-                <input type="text" class="form-control" id="apellido" data-validation="required alphanumeric" name="name">
-        
+                <input type="text" class="form-control" id="apellidoc" data-validation="required alphanumeric" name="name">
+
               </div>
               <div class="form-group">
                 <label>Email</label>
-                <input type="text" class="form-control" id="email" data-validation="required email" name="email">
+                <input type="text" class="form-control" id="emailc" data-validation="required email" name="email">
               </div>
               <div class="form-group">
                 <label>Contraseña</label>
                 <input type="password" class="form-control" name="pass_confirmation" data-validation="length" data-validation-length="min8">
-        
-        
+
+
               </div>
               <div class="form-group">
                 <label>Confirma la contraseña</label>
-                <input type="password" class="form-control" id="contrasenia" name="pass" data-validation="confirmation">
+                <input type="password" class="form-control" id="contraseniac" name="pass" data-validation="confirmation">
+              </div>
+              <div class="form-group">
+                <label>Especialidad</label>
+                <input type="text" class="form-control" data-validation="required alphanumeric" name="name" id="especialidad">
+
               </div>
               <div class="form-group">
                 <label>Telefono</label>
-                <input type="text" class="form-control" id="telefono" data-validation="required number" name="phone">
+                <input type="text" class="form-control" id="telefonoc" data-validation="required number" name="phone">
               </div>
               <div class="form-group">
                 <label>Provincia</label>
-                <input type="text" name="provincia" class="form-control" id="provincia" data-validation="required alphanumeric" name="address">
+                <input type="text" name="provincia" class="form-control" id="provinciac" data-validation="required alphanumeric" name="address">
               </div>
               <div class="form-group">
                 <label>Ciudad</label>
-                <input type="text" id="ciudad" class="form-control" data-validation="required alphanumeric" name="address">
+                <input type="text" id="ciudadc" class="form-control" data-validation="required alphanumeric" name="address">
               </div>
-        
+
               <div class="controls">
                 <button type="submit" class="btn btn-primary" id="guardar_cocinero">Guardar</button>
               </div>
-        
-              <!-- <a href="#" class="btn btn-default">Cancelar</a> -->
+
+
             </form>
-        
+
           </div>
-</div>
-        <br>
+        </div>
+
         <div id="cont_usuario">
           <div class="container mt-5">
 
@@ -144,8 +151,8 @@
             </div>
         
             <form id="formularioContacto">
-        
-        
+
+
               <div class="form-group">
                 <label>Nombre</label>
                 <input type="text" class="form-control" data-validation="required alphanumeric" name="name" id="nombre">
@@ -190,7 +197,8 @@
               <!-- <a href="#" class="btn btn-default">Cancelar</a> -->
             </form>
         
-          </div>        </div>
+          </div>
+        </div>
       </div>
       <div class="col">
         <!-- derecha -->
