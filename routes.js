@@ -79,9 +79,10 @@ app.get('/showchef_user_consul', function (req, res) {
 
 //eliminar usuarios de showchef
 app.post('/showchef_user/delete', function (req, res) {
-    let sql = `DELETE FROM usuario where id = '${req.body.id}'`;
+    let sql = `DELETE FROM usuario where IdUsuario = '${req.body.IdUsuario}'`;
     con.query(sql, function (err, result) {
         if (err) {
+            console.log(err)
             res.send(err);
         }
         else {
@@ -159,4 +160,17 @@ app.get('/showchef_cocinero_consul', function (req, res) {
         }
     });
 
+});
+//eliminar cocinero ShowChef
+app.post('/showchef_cocinero/delete', function (req, res) {
+    let sql = `DELETE FROM cocinero where idCocinero = '${req.body.idCocinero}'`;
+    con.query(sql, function (err, result) {
+        if (err) {
+           
+            res.send(err);
+        }
+        else {
+            res.send(result);
+        }
+    });
 });

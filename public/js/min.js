@@ -61,19 +61,35 @@ $(document).ready(function () {
                 '<td>' + usuario.FechaInicio + '</td>' +
                 '<td>' + usuario.Provincia + '</td>' +
                 '<td>' +
-                '<a href="#" title="Ver detalles" data-toggle="tooltip">' + '<i class="fas fa-eye">' + '</i>' + '</i>' + '</a>' +
-                '<a href="#" title="Modificar usuario" data-toggle="tooltip">' + '<i class="far fa-edit">' + '</i>' + '</a>' +
-                '<a href="#"title="Eliminar usuario" data-toggle="modal" data-target="#confirm-delete">' + '<i class="far fa-trash-alt">' + '</i>' + '</a>' +
+                '<a href="../views/detalles.html" title="Ver detalles" data-toggle="tooltip">' + '<i class="fas fa-eye">' + '</i>' + '</i>' + '</a>' +
+                '<a href="../views/modificar.html" title="Modificar usuario" data-toggle="tooltip">' + '<i class="far fa-edit">' + '</i>' + '</a>' +
+                '<a href="#"title="Eliminar usuario" data-toggle="modal" data-target="#confirm-delete" class="eliminarUS">' + '<i class="far fa-trash-alt">' + '</i>' + '</a>' +
                 '</td>' +
                 '</tr>'
             )
         });
     });
+
+//eliminar usuario
+listar.on('click','.eliminarUS', function () {
+    let IdUsuario = $(this).parent().parent().attr('id');
+    console.log(IdUsuario)
+    $(this).parent().parent().remove();
+     $.post('http://localhost:3000/showchef_user/delete', { IdUsuario: IdUsuario }, function () {
+    });
+})
+
+
+    //ver detalles de uruarios
+
+
+
     //---------Modificar Usuarios
+  
 var modUser = $('#nombre_mod') 
 
 modUser.on('change','nuevoNombe',function () {
-$.get('http://localhost:3000/showchef_user/update'),{IdUsuario:IdUsuario,Nombre:Nombre}
+$.post('http://localhost:3000/showchef_user/update'),{IdUsuario:IdUsuario,Nombre:Nombre}
 
   })
     //------------Cocineros-------------------
@@ -121,14 +137,22 @@ $.get('http://localhost:3000/showchef_user/update'),{IdUsuario:IdUsuario,Nombre:
                 '<td>' + cocinero.Provincia_c + '</td>' +
                 '<td>' +
                 '<a href="#" title="Ver detalles" data-toggle="tooltip">' + '<i class="fas fa-eye">' + '</i>' + '</i>' + '</a>' +
-                '<a href="' + mod_c + ' " title="Modificar usuario" data-toggle="tooltip">' + '<i class="far fa-edit">' + '</i>' + '</a>' +
-                '<a href="#"title="Eliminar usuario" data-toggle="modal" data-target="#confirm-delete">' + '<i class="far fa-trash-alt">' + '</i>' + '</a>' +
+                '<a href="" title="Modificar usuario" data-toggle="tooltip">' + '<i class="far fa-edit">' + '</i>' + '</a>' +
+                '<a href="#"title="Eliminar usuario" data-toggle="modal" data-target="#confirm-delete" class="eliminarCo">' + '<i class="far fa-trash-alt">' + '</i>' + '</a>' +
                 '</td>' +
                 '</tr>'
             )
         });
     });
 
+    //eliminar cocinero
+listar.on('click','.eliminarCo', function () {
+    let idCocinero = $(this).parent().parent().attr('id');
+   
+    $(this).parent().parent().remove();
+     $.post('http://localhost:3000/showchef_cocinero/delete', { idCocinero: idCocinero }, function () {
+    });
+})
     //-------------------ocultar y reaparecer texto
 
     $(function () {
@@ -147,5 +171,13 @@ $.get('http://localhost:3000/showchef_user/update'),{IdUsuario:IdUsuario,Nombre:
     })
     //-------------togglle de pantalle gestion de usuarios
     $('[data-toggle="tooltip"]').tooltip();
+
+    //-------------------intentando abrir los HTML en enlace externo
+    $("a.external").click(function() {
+        url = $(this).attr("href");
+        window.open(url, '_blank');
+        return false;
+     });
+
 
 }); //fin document.ready
