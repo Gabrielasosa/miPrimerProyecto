@@ -110,6 +110,24 @@ app.post('/showchef_user/update', function (req, res) {
     });
 });
 
+//Consultar usuario por ID
+app.get('/showchef_usuario_consulId', function (req, res) {
+    //let idusuaria = req.params.id;
+    let sql = `SELECT * from usuario WHERE IdUsuario = ${req.query.IdUsuario}`;
+    con.query(sql, function (err, result) {
+        if (err) {
+           
+            res.send(err);
+        }
+        else {
+           
+            res.send(result)
+            }
+          
+        
+    });
+ });
+
 //----------------todas las rutas para Cocinero-----------------
 
 //ruta para añadir Cocinero
@@ -175,3 +193,21 @@ app.post('/showchef_cocinero/delete', function (req, res) {
     });
 });
 
+//------------
+//Consultar cocinero por ID
+app.get('/showchef_cocinero_consulId', function (req, res) {
+    //let idusuaria = req.params.id;
+    let sql = `SELECT * from cocinero WHERE idCocinero = ${req.query.idCocinero}`;
+    con.query(sql, function (err, result) {
+        if (err) {
+         
+            res.send(err);
+        }
+        else {
+         
+            res.send(result)
+            }
+          
+        
+    });
+ });

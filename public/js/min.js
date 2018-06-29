@@ -11,9 +11,9 @@ $(document).ready(function () {
     });
     //--------obtener fecha actual
     var d = new Date();
-
     var month = d.getMonth() + 1;
     var day = d.getDate();
+
 
     var output = d.getFullYear() + '/' +
         (month < 10 ? '0' : '') + month + '/' +
@@ -61,8 +61,8 @@ $(document).ready(function () {
                 '<td>' + usuario.FechaInicio + '</td>' +
                 '<td>' + usuario.Provincia + '</td>' +
                 '<td>' +
-                '<a href="../views/detalles.html" title="Ver detalles" data-toggle="tooltip">' + '<i class="fas fa-eye">' + '</i>' + '</i>' + '</a>' +
-                '<a href="../views/modificar.html" title="Modificar usuario" data-toggle="tooltip">' + '<i class="far fa-edit">' + '</i>' + '</a>' +
+                '<a href="#" title="Ver detalles" data-toggle="tooltip" class="mostrarU">' + '<i class="fas fa-eye">' + '</i>' + '</i>' + '</a>' +
+                '<a href="#" title="Modificar usuario" data-toggle="tooltip">' + '<i class="far fa-edit">' + '</i>' + '</a>' +
                 '<a href="#"title="Eliminar usuario" data-toggle="modal" data-target="#confirm-delete" class="eliminarUS">' + '<i class="far fa-trash-alt">' + '</i>' + '</a>' +
                 '</td>' +
                 '</tr>'
@@ -70,17 +70,37 @@ $(document).ready(function () {
         });
     });
 
+
+
     //eliminar usuario
     listar.on('click', '.eliminarUS', function () {
         let IdUsuario = $(this).parent().parent().attr('id');
-        console.log(IdUsuario)
+
         $(this).parent().parent().remove();
         $.post('http://localhost:3000/showchef_user/delete', { IdUsuario: IdUsuario }, function () {
         });
     })
 
 
-    //ver detalles de uruarios
+
+    //ver los detalles del Usuario al hacer click en el boton del ojito
+    listar.on('click', '.mostrarU', function () {
+
+        let IdUsuario = $(this).parent().parent().attr('id');
+
+        $.get('http://localhost:3000/showchef_usuario_consulId', { IdUsuario: IdUsuario }, function (usuario) {
+
+            $('#listaProyectos').append('<li id="' + usuario[0].IdUsuario + '" class="list-group-item active" >Id: ' + usuario[0].IdUsuario + '</li>' +
+                '<li class="list-group-item">Nombre: ' + usuario[0].Nombre + '</li>' +
+                '<li class="list-group-item">Apellido: ' + usuario[0].Apellido + '</li>' +
+                '<li class="list-group-item">Email: ' + usuario[0].Email + '</li>' +
+                '<li class="list-group-item">Password: ' + usuario[0].password + '</li>' +
+                '<li class="list-group-item">Provincia: ' + usuario[0].provincia + '</li>' +
+                '<li class="list-group-item">Ciudad: ' + usuario[0].Ciudad + '</li>' +
+                '<li class="list-group-item">Rol: ' + usuario[0].idRol + '</li>'
+            )
+        });
+    })
 
 
 
@@ -92,6 +112,11 @@ $(document).ready(function () {
         $.post('http://localhost:3000/showchef_user/update'), { IdUsuario: IdUsuario, Nombre: Nombre }
 
     })
+
+
+
+
+
     //------------Cocineros-------------------
 
     //-------------------Registro de Cocineros------------------
@@ -122,7 +147,7 @@ $(document).ready(function () {
         }); //fin post
     }) //fin funcion
 
-    //-------------consultar cocineros-----------------
+    //-------------consultar cocineros en la tabla-----------------
 
 
     var listar = $('#linea')
@@ -137,23 +162,15 @@ $(document).ready(function () {
                 '<td>' + cocinero.FechaInicio_c + '</td>' +
                 '<td>' + cocinero.Provincia_c + '</td>' +
                 '<td>' +
-                '<a href="#" title="Ver detalles" data-toggle="tooltip" class="mostrar">' + '<i class="fas fa-eye">' + '</i>' + '</i>' + '</a>' +
-                '<a href="#" title="ver usuario" data-toggle="tooltip"  >' + '<i class="far fa-edit">' + '</i>' + '</a>' +
-                '<a href="#"title="Eliminar usuario" data-toggle="modal" data-target="#confirm-delete" class="eliminarCo">' + '<i class="far fa-trash-alt">' + '</i>' + '</a>' +
+                '<a href="#" title="Ver detalles" data-toggle="tooltip" class="mostrarC">' + '<i class="fas fa-eye">' + '</i>' + '</i>' + '</a>' +
+                '<a href="#" title="modificar cocinero" data-toggle="tooltip"  >' + '<i class="far fa-edit">' + '</i>' + '</a>' +
+                '<a href="#"title="Eliminar cocinero" data-toggle="modal" data-target="#confirm-delete" class="eliminarCo">' + '<i class="far fa-trash-alt">' + '</i>' + '</a>' +
                 '</td>' +
                 '</tr>'
 
 
-                
+
             )
-
-            //-------prueba dentro de la funcion
-        //     let mostrar = $('.mostrar')
-        //     mostrar.on('click', function () {
-        //         let lista = $('#listaProyectos');
-        //         lista.append('<li id="' + cocinero.idCocinero + '">' + cocinero.Nombre_c + '</li>')
-        //    })
-
 
 
 
@@ -162,54 +179,29 @@ $(document).ready(function () {
 
     });
 
+    //ver los detalles del Cocinero al hacer click en el boton del ojito
+    listar.on('click', '.mostrarC', function () {
 
-    listar.on('click', '.mostrar', function () {
         let idCocinero = $(this).parent().parent().attr('id');
 
-       // $(this).parent().parent();
-        $.get('http://localhost:3000/showchef_cocinero_consul',  function (cocinero) {
-            $('#listaProyectos').append('<li id="' + idCocinero + '">' + cocinero.Nombre_c + '</li>')
+        $.get('http://localhost:3000/showchef_cocinero_consulId', { idCocinero: idCocinero }, function (cocinero) {
+
+            $('#listaProyectos').append('<li id="' + cocinero[0].idCocinero + '" class="list-group-item active">Id: ' + cocinero[0].idCocinero + '</li>' +
+                '<li class="list-group-item">Nombre: ' + cocinero[0].Nombre_c + '</li>' +
+                '<li class="list-group-item">Apellido: ' + cocinero[0].Apellido_c + '</li>' +
+                '<li class="list-group-item">Email: ' + cocinero[0].Email_c + '</li>' +
+                '<li class="list-group-item">Contraseña: ' + cocinero[0].Password_c + '</li>' +
+                '<li class="list-group-item">Provincia: ' + cocinero[0].Provincia_c + '</li>' +
+                '<li class="list-group-item">Ciudad: ' + cocinero[0].Ciudad_c + '</li>' +
+                '<li class="list-group-item">Telefono: ' + cocinero[0].Telefono_c + '</li>' +
+                '<li class="list-group-item">Fecha Inicio: ' + cocinero[0].FechaInicio_c + '</li>' +
+                '<li class="list-group-item">Rol: ' + cocinero[0].idRol_c + '</li>' +
+                '<li class="list-group-item">Especialidad: ' + cocinero[0].Especialidad_c + '</li>')
         });
     })
 
 
-      //-------prueba dentro de la funcion
-      let mostrar = $('.mostrar')
-      mostrar.on('click', function () {
-          let lista = $('#listaProyectos');
-          
-     })
-
-//--------------prueba2
-  
-    
-//    mostrar.on('click', '.mostrar', function () {
-//     let lista = $('#listaProyectos');
-//         $.get('http://localhost:3000/showchef_cocinero_consul', function () {
-//             lista.append('<li id="' + cocinero.idCocinero + '">' + cocinero.Nombre_c + '</li>')
-//         });
-//     })
-
-    //----------prueba1
-    //mostrar al hacer clic en un cocinero
-
-    // var mostrar = $('#mostrar')
-
-    // mostrar.on('click',  mostrar, function () {
-    //     $.get('http://localhost:3000/showchef_cocinero_consul', function (res) {
-    //         let lista = $('#listaProyectos');
-    //         res.forEach(cocinero => {
-    //             lista.append('<li id="' + cocinero.idCocinero + '">' + cocinero.Nombre_c + '</li>')
-
-    //         });
-    //     });//fin mostrar
-    //     //eliminar cocinero
-
-    // })
-
-
-
-
+    //---------eliminar-----------
     listar.on('click', '.eliminarCo', function () {
         let idCocinero = $(this).parent().parent().attr('id');
 
@@ -217,7 +209,7 @@ $(document).ready(function () {
         $.post('http://localhost:3000/showchef_cocinero/delete', { idCocinero: idCocinero }, function () {
         });
     })
-    //-------------------ocultar y reaparecer texto
+    //-------------ocultar y reaparecer texto
 
     $(function () {
         $("#btn_cocinero").click(function () {
@@ -233,6 +225,29 @@ $(document).ready(function () {
 
         });
     })
+
+
+    //-------------mostrar y ocultar al hacedr click en el siguiente usuario u cocinero
+    $(function () {
+
+        $(".mostrarU").click(function () {
+            $('#listaProyectos').append().hide();
+            $('#listaProyectos').append().show();
+           
+
+
+        });
+        $(".mostrarC").click(function () {
+            $("#listaProyectos").append().hide();
+            $("#listaProyectos").append().show();
+   
+
+
+        });
+    })
+
+
+
     //-------------togglle de pantalle gestion de usuarios
     $('[data-toggle="tooltip"]').tooltip();
 
