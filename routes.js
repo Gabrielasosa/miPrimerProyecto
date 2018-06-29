@@ -92,20 +92,19 @@ app.post('/showchef_user/delete', function (req, res) {
 });
 
 //modificar usuarios de showchef
+
 app.post('/showchef_user/update', function (req, res) {
-    let sql = `UPDATE usuario set Nombre='${req.body.Nombre}',Email='${req.body.Email}' where id = '${req.body.IdUsuario}'`;
+    console.log(req)
+    let sql = `UPDATE usuario set Nombre='${req.body.Nombre}' where IdUsuario = '${req.body.IdUsuario}'`;
+ 
     con.query(sql, function (err, result) {
-
-        if (err) {
-            console.log(err)
+            if (err) {
+               
             res.send(err);
-
         }
         else {
+          
             res.send(result);
-            // let proyecto={
-            //     name: req.body.name
-            // }
         }
     });
 });
@@ -114,13 +113,15 @@ app.post('/showchef_user/update', function (req, res) {
 app.get('/showchef_usuario_consulId', function (req, res) {
     //let idusuaria = req.params.id;
     let sql = `SELECT * from usuario WHERE IdUsuario = ${req.query.IdUsuario}`;
+    
     con.query(sql, function (err, result) {
+
         if (err) {
-           
+              
             res.send(err);
         }
         else {
-           
+
             res.send(result)
             }
           

@@ -58,11 +58,11 @@ $(document).ready(function () {
                 '<td>' + usuario.Nombre + '  ' + usuario.Apellido + '</td>' +
                 '<td>' + usuario.Email + '</td>' +
                 '<td>' + usuario.idRol + '</td>' +
-                '<td>' + usuario.FechaInicio + '</td>' +
+                '<td>' + usuario.FechaInicio.slice(0, 10) + '</td>' +
                 '<td>' + usuario.Provincia + '</td>' +
                 '<td>' +
                 '<a href="#" title="Ver detalles" data-toggle="tooltip" class="mostrarU">' + '<i class="fas fa-eye">' + '</i>' + '</i>' + '</a>' +
-                '<a href="#" title="Modificar usuario" data-toggle="tooltip">' + '<i class="far fa-edit">' + '</i>' + '</a>' +
+                '<a href="#" title="Modificar usuario" data-toggle="tooltip" class="modUser">' + '<i class="far fa-edit">' + '</i>' + '</a>' +
                 '<a href="#"title="Eliminar usuario" data-toggle="modal" data-target="#confirm-delete" class="eliminarUS">' + '<i class="far fa-trash-alt">' + '</i>' + '</a>' +
                 '</td>' +
                 '</tr>'
@@ -85,19 +85,21 @@ $(document).ready(function () {
 
     //ver los detalles del Usuario al hacer click en el boton del ojito
     listar.on('click', '.mostrarU', function () {
-
+        $('#listaProyectos ul').remove();
         let IdUsuario = $(this).parent().parent().attr('id');
 
         $.get('http://localhost:3000/showchef_usuario_consulId', { IdUsuario: IdUsuario }, function (usuario) {
 
-            $('#listaProyectos').append('<li id="' + usuario[0].IdUsuario + '" class="list-group-item active" >Id: ' + usuario[0].IdUsuario + '</li>' +
+            $('#listaProyectos').append('<ul><li id="' + usuario[0].IdUsuario + '" class="list-group-item active" >Id: ' + usuario[0].IdUsuario + '</li>' +
                 '<li class="list-group-item">Nombre: ' + usuario[0].Nombre + '</li>' +
                 '<li class="list-group-item">Apellido: ' + usuario[0].Apellido + '</li>' +
                 '<li class="list-group-item">Email: ' + usuario[0].Email + '</li>' +
                 '<li class="list-group-item">Password: ' + usuario[0].password + '</li>' +
-                '<li class="list-group-item">Provincia: ' + usuario[0].provincia + '</li>' +
+                '<li class="list-group-item">Provincia: ' + usuario[0].Provincia + '</li>' +
                 '<li class="list-group-item">Ciudad: ' + usuario[0].Ciudad + '</li>' +
-                '<li class="list-group-item">Rol: ' + usuario[0].idRol + '</li>'
+                '<li class="list-group-item">Telefono: ' + usuario[0].Telefono + '</li>' +
+                '<li class="list-group-item">Fecha Inicio: ' + usuario[0].FechaInicio.slice(0, 10) + '</li>' +
+                '<li class="list-group-item">Rol: ' + usuario[0].idRol + '</li></ul>'
             )
         });
     })
@@ -106,12 +108,64 @@ $(document).ready(function () {
 
     //---------Modificar Usuarios
 
-    var modUser = $('#nombre_mod')
 
-    modUser.on('change', 'nuevoNombe', function () {
-        $.post('http://localhost:3000/showchef_user/update'), { IdUsuario: IdUsuario, Nombre: Nombre }
+    listar.on('click', '.modUser', function () {
+        $('#listaProyectos ul').remove();
+        let IdUsuario = $(this).parent().parent().attr('id');
 
+        $.get('http://localhost:3000/showchef_usuario_consulId', { IdUsuario: IdUsuario }, function (usuario) {
+
+            $('#listaProyectos').append('<ul id="' + usuario[0].IdUsuario +'"><li class="list-group-item active" >Id: ' + usuario[0].IdUsuario + '</li>' +
+                '<li class="list-group-item">Nombre: ' + usuario[0].Nombre + '   <input type="text" class="mod">' + '</li>' +
+
+                '<li class="list-group-item">Email: ' + usuario[0].Email + '   <input type="text" class="mod">' + '</li>' +
+                '</ul>'
+            )
+        });
     })
+    //se supone q deberia modificar 
+
+    $('#listaProyectos').on('change', '.mod', function () {
+        console.log('')
+
+        let IdUsuario = $(this).parent().parent().attr('id');
+        console.log(IdUsuario)
+        let name = $(this).val();
+        console.log(name)
+        //let email = $(this).val();
+        $.post('http://localhost:3000/showchef_user/update', { IdUsuario: IdUsuario, Nombre: name}, function (usuario) {
+            
+
+            item.html('<li>' + name + '<input type="text" class="mod">' +
+                
+
+                '</li>')
+          });
+
+
+
+    });
+
+
+
+
+    // listar.on('click', '.modUser', function () {
+    //     let IdUsuario = $(this).parent().parent().attr('id');
+    //     let name =$(this).val()
+    //     // let IdUsuario = $(this).parent();
+    //     // let nombre = $(this).val();
+    //     $.post('http://localhost:3000/showchef_user/update'), { IdUsuario: IdUsuario, Nombre: Nombre, Email: Email }, function (usuario) {
+    //         console.log('usuario del min'+Nombre);
+
+    //         IdUsuario.html('<ul><li id="' + usuario[0].IdUsuario + '" class="list-group-item active" >Id: ' + usuario[0].IdUsuario + '</li>' +
+    //             '<li class="list-group-item">Nombre: ' + name+ '<input type="text" class="mod">' + '</li>'+
+
+    //             '<li class="list-group-item">Email: ' + usuario[0].Email +   '<input type="text" class="mod">' + '</li>'+
+    //            '</ul>')
+
+    //     }
+
+    // })
 
 
 
@@ -159,7 +213,7 @@ $(document).ready(function () {
                 '<td>' + cocinero.Nombre_c + '  ' + cocinero.Apellido_c + '</td>' +
                 '<td>' + cocinero.Email_c + '</td>' +
                 '<td>' + cocinero.idRol_c + '</td>' +
-                '<td>' + cocinero.FechaInicio_c + '</td>' +
+                '<td>' + cocinero.FechaInicio_c.slice(0, 10) + '</td>' +
                 '<td>' + cocinero.Provincia_c + '</td>' +
                 '<td>' +
                 '<a href="#" title="Ver detalles" data-toggle="tooltip" class="mostrarC">' + '<i class="fas fa-eye">' + '</i>' + '</i>' + '</a>' +
@@ -181,12 +235,12 @@ $(document).ready(function () {
 
     //ver los detalles del Cocinero al hacer click en el boton del ojito
     listar.on('click', '.mostrarC', function () {
-
+        $('#listaProyectos ul').remove();
         let idCocinero = $(this).parent().parent().attr('id');
 
         $.get('http://localhost:3000/showchef_cocinero_consulId', { idCocinero: idCocinero }, function (cocinero) {
 
-            $('#listaProyectos').append('<li id="' + cocinero[0].idCocinero + '" class="list-group-item active">Id: ' + cocinero[0].idCocinero + '</li>' +
+            $('#listaProyectos').append('<ul><li id="' + cocinero[0].idCocinero + '" class="list-group-item active">Id: ' + cocinero[0].idCocinero + '</li>' +
                 '<li class="list-group-item">Nombre: ' + cocinero[0].Nombre_c + '</li>' +
                 '<li class="list-group-item">Apellido: ' + cocinero[0].Apellido_c + '</li>' +
                 '<li class="list-group-item">Email: ' + cocinero[0].Email_c + '</li>' +
@@ -194,9 +248,9 @@ $(document).ready(function () {
                 '<li class="list-group-item">Provincia: ' + cocinero[0].Provincia_c + '</li>' +
                 '<li class="list-group-item">Ciudad: ' + cocinero[0].Ciudad_c + '</li>' +
                 '<li class="list-group-item">Telefono: ' + cocinero[0].Telefono_c + '</li>' +
-                '<li class="list-group-item">Fecha Inicio: ' + cocinero[0].FechaInicio_c + '</li>' +
+                '<li class="list-group-item">Fecha Inicio: ' + cocinero[0].FechaInicio_c.slice(0, 10) + '</li>' +
                 '<li class="list-group-item">Rol: ' + cocinero[0].idRol_c + '</li>' +
-                '<li class="list-group-item">Especialidad: ' + cocinero[0].Especialidad_c + '</li>')
+                '<li class="list-group-item">Especialidad: ' + cocinero[0].Especialidad_c + '</li></ul>')
         });
     })
 
@@ -209,6 +263,10 @@ $(document).ready(function () {
         $.post('http://localhost:3000/showchef_cocinero/delete', { idCocinero: idCocinero }, function () {
         });
     })
+
+
+
+
     //-------------ocultar y reaparecer texto
 
     $(function () {
@@ -226,25 +284,6 @@ $(document).ready(function () {
         });
     })
 
-
-    //-------------mostrar y ocultar al hacedr click en el siguiente usuario u cocinero
-    $(function () {
-
-        $(".mostrarU").click(function () {
-            $('#listaProyectos').append().hide();
-            $('#listaProyectos').append().show();
-           
-
-
-        });
-        $(".mostrarC").click(function () {
-            $("#listaProyectos").append().hide();
-            $("#listaProyectos").append().show();
-   
-
-
-        });
-    })
 
 
 
