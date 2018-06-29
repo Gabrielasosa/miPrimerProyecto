@@ -212,3 +212,22 @@ app.get('/showchef_cocinero_consulId', function (req, res) {
         
     });
  });
+
+
+ //modificar cociner de showchef
+
+app.post('/showchef_cocinero/update', function (req, res) {
+   
+    let sql = `UPDATE cocinero set Nombre_c='${req.body.Nombre_c}' where idCocinero = '${req.body.idCocinero}'`;
+ 
+    con.query(sql, function (err, result) {
+            if (err) {
+               
+            res.send(err);
+        }
+        else {
+          
+            res.send(result);
+        }
+    });
+});
