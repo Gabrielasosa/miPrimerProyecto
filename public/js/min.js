@@ -247,7 +247,7 @@ $(document).ready(function () {
         });
     })
 
-    //se supone q deberia modificar 
+    // modificar  a traves del imput
     $('#listaProyectos').on('change', '.modCi', function () {
         let idCocinero = $(this).parent().parent().attr('id');
 

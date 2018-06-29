@@ -214,7 +214,7 @@ app.get('/showchef_cocinero_consulId', function (req, res) {
  });
 
 
- //modificar cociner de showchef
+ //modificar a traves del input
 
 app.post('/showchef_cocinero/update', function (req, res) {
    
