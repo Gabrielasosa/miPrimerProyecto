@@ -44,7 +44,7 @@ CREATE TABLE `cocinero` (
 
 LOCK TABLES `cocinero` WRITE;
 /*!40000 ALTER TABLE `cocinero` DISABLE KEYS */;
-INSERT INTO `cocinero` VALUES (1,'Gabriela','Gabriela','gabita_792@hotmail.com','123456789','1','1','1','2018-06-27','C','undefined'),(2,'mario','mario','mario@casas.com','123456789','123','123','222','2018-06-27','C','undefined'),(3,'maritoo','loco','loco@loco.com','123456789','2','2','2','2018-06-27','C','2'),(4,'Carol','Rosa','Carol@Rosa.com','123456789','Malaga','Ojen','699999999','2018-06-27','C','Sushi'),(5,'Mario','vargas','mario@vargas.com','123456789','Malaga','Estepona','123132','2018-06-27','C','Italiano');
+INSERT INTO `cocinero` VALUES (1,'Rocio','Santos','Rocio@prueba','1234567899','Malaga','Marbella','625894454','2016-07-06','C','Italiana'),(2,'Bea','','Bea@prueba','1234567899','Malaga','Ricon de la Victoria','699894454','2016-08-17','C','Tahilandesa'),(3,'Juan','Almodovar','Juan@prueba','1234567899','Malaga','Estepona','635985615','2016-09-06','C','Mexicana');
 /*!40000 ALTER TABLE `cocinero` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-27 13:17:40
+-- Dump completed on 2018-06-29 18:33:16
