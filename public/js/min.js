@@ -70,14 +70,14 @@ $(document).ready(function () {
         });
     });
 
-//eliminar usuario
-listar.on('click','.eliminarUS', function () {
-    let IdUsuario = $(this).parent().parent().attr('id');
-    console.log(IdUsuario)
-    $(this).parent().parent().remove();
-     $.post('http://localhost:3000/showchef_user/delete', { IdUsuario: IdUsuario }, function () {
-    });
-})
+    //eliminar usuario
+    listar.on('click', '.eliminarUS', function () {
+        let IdUsuario = $(this).parent().parent().attr('id');
+        console.log(IdUsuario)
+        $(this).parent().parent().remove();
+        $.post('http://localhost:3000/showchef_user/delete', { IdUsuario: IdUsuario }, function () {
+        });
+    })
 
 
     //ver detalles de uruarios
@@ -85,13 +85,13 @@ listar.on('click','.eliminarUS', function () {
 
 
     //---------Modificar Usuarios
-  
-var modUser = $('#nombre_mod') 
 
-modUser.on('change','nuevoNombe',function () {
-$.post('http://localhost:3000/showchef_user/update'),{IdUsuario:IdUsuario,Nombre:Nombre}
+    var modUser = $('#nombre_mod')
 
-  })
+    modUser.on('change', 'nuevoNombe', function () {
+        $.post('http://localhost:3000/showchef_user/update'), { IdUsuario: IdUsuario, Nombre: Nombre }
+
+    })
     //------------Cocineros-------------------
 
     //-------------------Registro de Cocineros------------------
@@ -126,9 +126,10 @@ $.post('http://localhost:3000/showchef_user/update'),{IdUsuario:IdUsuario,Nombre
 
 
     var listar = $('#linea')
-    var mod_c = $("a[href$='../views/modificar.html']")
+
     $.get('http://localhost:3000/showchef_cocinero_consul', function (res) {
         res.forEach(cocinero => {
+
             listar.append('<tr id="' + cocinero.idCocinero + '">' + '<td>' + cocinero.idCocinero + '</td>' +
                 '<td>' + cocinero.Nombre_c + '  ' + cocinero.Apellido_c + '</td>' +
                 '<td>' + cocinero.Email_c + '</td>' +
@@ -136,23 +137,86 @@ $.post('http://localhost:3000/showchef_user/update'),{IdUsuario:IdUsuario,Nombre
                 '<td>' + cocinero.FechaInicio_c + '</td>' +
                 '<td>' + cocinero.Provincia_c + '</td>' +
                 '<td>' +
-                '<a href="#" title="Ver detalles" data-toggle="tooltip">' + '<i class="fas fa-eye">' + '</i>' + '</i>' + '</a>' +
-                '<a href="" title="Modificar usuario" data-toggle="tooltip">' + '<i class="far fa-edit">' + '</i>' + '</a>' +
+                '<a href="#" title="Ver detalles" data-toggle="tooltip" class="mostrar">' + '<i class="fas fa-eye">' + '</i>' + '</i>' + '</a>' +
+                '<a href="#" title="ver usuario" data-toggle="tooltip"  >' + '<i class="far fa-edit">' + '</i>' + '</a>' +
                 '<a href="#"title="Eliminar usuario" data-toggle="modal" data-target="#confirm-delete" class="eliminarCo">' + '<i class="far fa-trash-alt">' + '</i>' + '</a>' +
                 '</td>' +
                 '</tr>'
+
+
+                
             )
+
+            //-------prueba dentro de la funcion
+        //     let mostrar = $('.mostrar')
+        //     mostrar.on('click', function () {
+        //         let lista = $('#listaProyectos');
+        //         lista.append('<li id="' + cocinero.idCocinero + '">' + cocinero.Nombre_c + '</li>')
+        //    })
+
+
+
+
         });
+
+
     });
 
-    //eliminar cocinero
-listar.on('click','.eliminarCo', function () {
-    let idCocinero = $(this).parent().parent().attr('id');
-   
-    $(this).parent().parent().remove();
-     $.post('http://localhost:3000/showchef_cocinero/delete', { idCocinero: idCocinero }, function () {
-    });
-})
+
+    listar.on('click', '.mostrar', function () {
+        let idCocinero = $(this).parent().parent().attr('id');
+
+       // $(this).parent().parent();
+        $.get('http://localhost:3000/showchef_cocinero_consul',  function (cocinero) {
+            $('#listaProyectos').append('<li id="' + idCocinero + '">' + cocinero.Nombre_c + '</li>')
+        });
+    })
+
+
+      //-------prueba dentro de la funcion
+      let mostrar = $('.mostrar')
+      mostrar.on('click', function () {
+          let lista = $('#listaProyectos');
+          
+     })
+
+//--------------prueba2
+  
+    
+//    mostrar.on('click', '.mostrar', function () {
+//     let lista = $('#listaProyectos');
+//         $.get('http://localhost:3000/showchef_cocinero_consul', function () {
+//             lista.append('<li id="' + cocinero.idCocinero + '">' + cocinero.Nombre_c + '</li>')
+//         });
+//     })
+
+    //----------prueba1
+    //mostrar al hacer clic en un cocinero
+
+    // var mostrar = $('#mostrar')
+
+    // mostrar.on('click',  mostrar, function () {
+    //     $.get('http://localhost:3000/showchef_cocinero_consul', function (res) {
+    //         let lista = $('#listaProyectos');
+    //         res.forEach(cocinero => {
+    //             lista.append('<li id="' + cocinero.idCocinero + '">' + cocinero.Nombre_c + '</li>')
+
+    //         });
+    //     });//fin mostrar
+    //     //eliminar cocinero
+
+    // })
+
+
+
+
+    listar.on('click', '.eliminarCo', function () {
+        let idCocinero = $(this).parent().parent().attr('id');
+
+        $(this).parent().parent().remove();
+        $.post('http://localhost:3000/showchef_cocinero/delete', { idCocinero: idCocinero }, function () {
+        });
+    })
     //-------------------ocultar y reaparecer texto
 
     $(function () {
@@ -173,11 +237,11 @@ listar.on('click','.eliminarCo', function () {
     $('[data-toggle="tooltip"]').tooltip();
 
     //-------------------intentando abrir los HTML en enlace externo
-    $("a.external").click(function() {
+    $("a.external").click(function () {
         url = $(this).attr("href");
         window.open(url, '_blank');
         return false;
-     });
+    });
 
 
 }); //fin document.ready
