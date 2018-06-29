@@ -96,7 +96,7 @@ app.post('/showchef_user/delete', function (req, res) {
 app.post('/showchef_user/update', function (req, res) {
     console.log(req)
     let sql = `UPDATE usuario set Nombre='${req.body.Nombre}' where IdUsuario = '${req.body.IdUsuario}'`;
- 
+ console.log(sql)
     con.query(sql, function (err, result) {
             if (err) {
                

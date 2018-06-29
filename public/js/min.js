@@ -118,8 +118,7 @@ $(document).ready(function () {
             $('#listaProyectos').append('<ul id="' + usuario[0].IdUsuario +'"><li class="list-group-item active" >Id: ' + usuario[0].IdUsuario + '</li>' +
                 '<li class="list-group-item">Nombre: ' + usuario[0].Nombre + '   <input type="text" class="mod">' + '</li>' +
 
-                '<li class="list-group-item">Email: ' + usuario[0].Email + '   <input type="text" class="mod">' + '</li>' +
-                '</ul>'
+                 '</ul>'
             )
         });
     })
