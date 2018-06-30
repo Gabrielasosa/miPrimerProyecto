@@ -139,10 +139,7 @@ $(document).ready(function () {
         }, function (usuario) {
 
 
-            item.html('<li>' + name + '<input type="text" class="mod">' +
-
-
-                '</li>')
+            item.html('<li>' + name + '<input type="text" class="mod"></li>')
         });
 
 
@@ -260,13 +257,8 @@ $(document).ready(function () {
         }, function (cocinero) {
 
 
-            item.html('<li>' + name + '<input type="text" class="modCi">' +
-
-
-                '</li>')
+            item.html('<li>' + name + '<input type="text" class="modCi"></li>')
         });
-
-
 
     });
 

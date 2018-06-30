@@ -6,9 +6,7 @@ var app = require('./app');
 app.get('/', function (req, res) {
     res.render('index');
 })
-app.get('/index', function (req, res) {
-    res.render('index');
-})
+
 
 app.get('/registro', function (req, res) {
     res.render('registro');
@@ -17,10 +15,6 @@ app.get('/registro', function (req, res) {
 
 app.get('/gestionUsuarios', function (req, res) {
     res.render('gestionUsuarios');
-})
-
-app.get('/modificar', function (req, res) {
-    res.render('modificar');
 })
 
 //----------------todas las rutas para usuario-----------------
@@ -34,11 +28,10 @@ app.post('/showchef_user/add', function (req, res) {
     ,'${req.body.Ciudad}','${req.body.Telefono}','${req.body.FechaInicio}','${req.body.idRol}','${req.body.Password}')`;
 
     con.query(sql, function (err, result) {
-        console.log(sql)
+
         if (err) {
             res.send(err);
-        }
-        else {
+        } else {
             let showchef_user = {
                 IdUsuario: result.IdUsuario,
                 Nombre: req.body.Nombre,
@@ -68,9 +61,8 @@ app.get('/showchef_user_consul', function (req, res) {
     con.query(sql, function (err, result) {
         if (err) {
             res.send(err);
-           
-        }
-        else {
+
+        } else {
             res.send(result);
         }
     });
@@ -82,10 +74,9 @@ app.post('/showchef_user/delete', function (req, res) {
     let sql = `DELETE FROM usuario where IdUsuario = '${req.body.IdUsuario}'`;
     con.query(sql, function (err, result) {
         if (err) {
-            console.log(err)
+
             res.send(err);
-        }
-        else {
+        } else {
             res.send(result);
         }
     });
@@ -94,16 +85,15 @@ app.post('/showchef_user/delete', function (req, res) {
 //modificar usuarios de showchef
 
 app.post('/showchef_user/update', function (req, res) {
-    console.log(req)
+
     let sql = `UPDATE usuario set Nombre='${req.body.Nombre}' where IdUsuario = '${req.body.IdUsuario}'`;
- console.log(sql)
+    console.log(sql)
     con.query(sql, function (err, result) {
-            if (err) {
-               
+        if (err) {
+
             res.send(err);
-        }
-        else {
-          
+        } else {
+
             res.send(result);
         }
     });
@@ -113,21 +103,20 @@ app.post('/showchef_user/update', function (req, res) {
 app.get('/showchef_usuario_consulId', function (req, res) {
     //let idusuaria = req.params.id;
     let sql = `SELECT * from usuario WHERE IdUsuario = ${req.query.IdUsuario}`;
-    
+
     con.query(sql, function (err, result) {
 
         if (err) {
-              
+
             res.send(err);
-        }
-        else {
+        } else {
 
             res.send(result)
-            }
-          
-        
+        }
+
+
     });
- });
+});
 
 //----------------todas las rutas para Cocinero-----------------
 
@@ -138,13 +127,12 @@ app.post('/showchef_cocinero/add', function (req, res) {
     let sql = `INSERT INTO cocinero (Nombre_c, Apellido_c,Email_c,Provincia_c,Ciudad_c,Telefono_c,FechaInicio_c,idRol_c,Password_c,Especialidad_c) 
     VALUES ('${req.body.Nombre_c}','${req.body.Apellido_c}','${req.body.Email_c}','${req.body.Provincia_c}'
     ,'${req.body.Ciudad_c}','${req.body.Telefono_c}','${req.body.FechaInicio_c}','${req.body.idRol_c}','${req.body.Password_c}','${req.body.Especialidad_c}')`;
-   
+
     con.query(sql, function (err, result) {
         if (err) {
-          
+
             res.send(err);
-        }
-        else {
+        } else {
             let showchef_cocinero = {
                 idCocinero: result.idCocinero,
                 Nombre: req.body.Nombre_c,
@@ -156,10 +144,10 @@ app.post('/showchef_cocinero/add', function (req, res) {
                 FechaInicio: req.body.FechaInicio_c,
                 idRol: req.body.idRol_c,
                 Password: req.body.Password_c,
-                Especialidad_c:req.body.Especialidad_c
+                Especialidad_c: req.body.Especialidad_c
 
             }
-            res.send(showchef_cocinero );
+            res.send(showchef_cocinero);
         }
     });
 
@@ -173,8 +161,7 @@ app.get('/showchef_cocinero_consul', function (req, res) {
     con.query(sql, function (err, result) {
         if (err) {
             res.send(err);
-        }
-        else {
+        } else {
             res.send(result);
         }
     });
@@ -185,10 +172,9 @@ app.post('/showchef_cocinero/delete', function (req, res) {
     let sql = `DELETE FROM cocinero where idCocinero = '${req.body.idCocinero}'`;
     con.query(sql, function (err, result) {
         if (err) {
-           
+
             res.send(err);
-        }
-        else {
+        } else {
             res.send(result);
         }
     });
@@ -201,32 +187,30 @@ app.get('/showchef_cocinero_consulId', function (req, res) {
     let sql = `SELECT * from cocinero WHERE idCocinero = ${req.query.idCocinero}`;
     con.query(sql, function (err, result) {
         if (err) {
-         
+
             res.send(err);
-        }
-        else {
-         
+        } else {
+
             res.send(result)
-            }
-          
-        
+        }
+
+
     });
- });
+});
 
 
- //modificar a traves del input
+//modificar a traves del input
 
 app.post('/showchef_cocinero/update', function (req, res) {
-   
+
     let sql = `UPDATE cocinero set Nombre_c='${req.body.Nombre_c}' where idCocinero = '${req.body.idCocinero}'`;
- 
+
     con.query(sql, function (err, result) {
-            if (err) {
-               
+        if (err) {
+
             res.send(err);
-        }
-        else {
-          
+        } else {
+
             res.send(result);
         }
     });
