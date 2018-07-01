@@ -61,9 +61,9 @@ $(document).ready(function () {
                 '<td>' + usuario.FechaInicio.slice(0, 10) + '</td>' +
                 '<td>' + usuario.Provincia + '</td>' +
                 '<td>' +
-                '<a href="#" title="Ver detalles" data-toggle="tooltip" class="mostrarU">' + '<i class="fas fa-eye">' + '</i>' + '</i>' + '</a>' +
-                '<a href="#" title="Modificar usuario" data-toggle="tooltip" class="modUser">' + '<i class="far fa-edit">' + '</i>' + '</a>' +
-                '<a href="#"title="Eliminar usuario" data-toggle="modal" data-target="#confirm-delete" class="eliminarUS">' + '<i class="far fa-trash-alt">' + '</i>' + '</a>' +
+                '<a href="#" title="Ver detalles" data-toggle="tooltip" class="mostrarU ">' + '<i class="fas fa-eye" style="color:#dc3545">' + '</i>' + '</i>' + '</a>' +
+                '<a href="#" title="Modificar usuario" data-toggle="tooltip" class="modUser">' + '<i class="far fa-edit" style="color:#dc3545">' + '</i>' + '</a>' +
+                '<a href="#"title="Eliminar usuario" data-toggle="modal" data-target="#confirm-delete" class="eliminarUS">' + '<i style="color:#dc3545" class="far fa-trash-alt">' + '</i>' + '</a>' +
                 '</td>' +
                 '</tr>'
             )
@@ -192,9 +192,9 @@ $(document).ready(function () {
                 '<td>' + cocinero.FechaInicio_c.slice(0, 10) + '</td>' +
                 '<td>' + cocinero.Provincia_c + '</td>' +
                 '<td>' +
-                '<a href="#" title="Ver detalles" data-toggle="tooltip" class="mostrarC">' + '<i class="fas fa-eye">' + '</i>' + '</i>' + '</a>' +
-                '<a href="#" title="modificar cocinero" data-toggle="tooltip" class="modCocinero" >' + '<i class="far fa-edit">' + '</i>' + '</a>' +
-                '<a href="#"title="Eliminar cocinero" data-toggle="modal" data-target="#confirm-delete" class="eliminarCo">' + '<i class="far fa-trash-alt">' + '</i>' + '</a>' +
+                '<a href="#" title="Ver detalles" data-toggle="tooltip" class="mostrarC">' + '<i class="fas fa-eye" style="color:#dc3545">' + '</i>' + '</i>' + '</a>' +
+                '<a href="#" title="modificar cocinero" data-toggle="tooltip" class="modCocinero" >' + '<i class="far fa-edit" style="color:#dc3545">' + '</i>' + '</a>' +
+                '<a href="#"title="Eliminar cocinero" data-toggle="modal" data-target="#confirm-delete" class="eliminarCo">' + '<i style="color:#dc3545" class="far fa-trash-alt">' + '</i>' + '</a>' +
                 '</td>' +
                 '</tr>'
             )

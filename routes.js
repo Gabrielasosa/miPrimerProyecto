@@ -3,8 +3,8 @@ var app = require('./app');
 
 //----RUTAS----
 
-app.get('/', function (req, res) {
-    res.render('index');
+app.get('/nosotros', function (req, res) {
+    res.render('nosotros');
 })
 
 
@@ -15,6 +15,14 @@ app.get('/registro', function (req, res) {
 
 app.get('/gestionUsuarios', function (req, res) {
     res.render('gestionUsuarios');
+})
+
+app.get('/', function (req, res) {
+    res.render('index');
+})
+
+app.get('/index', function (req, res) {
+    res.render('index');
 })
 
 //----------------todas las rutas para usuario-----------------
