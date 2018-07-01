@@ -43,14 +43,11 @@ table tr td:last-child a {
 	z-index: 1;
 }
 
-#slider-ciudad {
-    background-image: url(../images/alquiler-bicicletas-malaga.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    height: 300px;
-    position: relative;
-}
+
+/* cambia el tamaño del slider */
+/* .carousel, .carousel-inner > .item > img {
+	height: 100px;
+  } */
 * {
 	box-sizing: border-box;
 }
