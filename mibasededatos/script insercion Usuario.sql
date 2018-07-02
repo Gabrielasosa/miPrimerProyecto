@@ -1,4 +1,5 @@
-SELECT * FROM showchef.usuario;
+#SELECT * FROM showchef.usuario;
+
 
 
 #truncate table usuario;
